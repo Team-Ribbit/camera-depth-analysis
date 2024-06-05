@@ -1,0 +1,6 @@
+---
+focal_length_min: 1
+focal_length_max: 60
+focal_length_binsize: 1
+distance: 10
+distance_binsize: 0.1
