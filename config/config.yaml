@@ -1,6 +1,7 @@
 ---
-focal_length_min: 1
-focal_length_max: 60
-focal_length_binsize: 1
+focal_length_min: 6.5e-3
+focal_length_max: 162.5e-3
+focal_length_binsize: 1.0e-3
+# focal_length_binsize: 10.0e-3
 distance: 10
-distance_binsize: 0.1
+distance_binsize: 1

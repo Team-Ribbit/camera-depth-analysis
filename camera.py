@@ -27,6 +27,27 @@ class CameraModel():
         pass
 
         return 0
+    
+
+
+"""
+at a given distance, what is the error at different zooms
+
+x - distance (z)
+y - error of z (m)
+- PPM integer error
+- The actual error on the bboxes for each distance (for now, keep it at 60% at all distances, but it should be a vector that becomes configurat)
+- worst case scenario assumption 
+
+
+for each error, you get pixe error, you multiply by ppm, and result is three different meter errors
+
+Each different instances of the line would be different focal lengths
+3 different plots
+
+"""
+
+
 
 
 

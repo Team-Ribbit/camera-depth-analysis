@@ -3,6 +3,7 @@ import argparse
 from utils import get_config_from_yaml
 import numpy as np
 import pandas as pd
+from matplotlib import pyplot as plt
 
 
 def generate_data(focal_length_min, focal_length_max, focal_length_binsize , end_distance,distance_binsize):
@@ -15,10 +16,6 @@ def generate_data(focal_length_min, focal_length_max, focal_length_binsize , end
 
     df = None
 
-    # print(focal_length_min, focal_length_max)
-    
-    # print(focal_lengths)
-    
     for focal_length in focal_lengths:
         print(focal_length, "focal_length")
         ppms = []
@@ -30,21 +27,23 @@ def generate_data(focal_length_min, focal_length_max, focal_length_binsize , end
         distances = np.linspace(start=1, stop=end_distance, num=distance_n_divisions)
 
         for distance in distances:
-            print(distance)
             ppm = camera.get_ppm(z=distance)
-            print("ppm",ppm)
             ppms.append(ppm)
 
-        print(f"{focal_length}", ppms)
-        ppm_col = {focal_length: ppms}
+        
         if df is None:
+            ppm_col = {"distances (m)":distances,f"F: {round(focal_length*1000, 2)}": ppms}
             df = pd.DataFrame(ppm_col)
-            df.index = distances
         else:
-            df[focal_length] = pd.Series(ppms, index=distances)
+            ppm_col = {focal_length: ppms}
+            df[f"F: {round(focal_length*1000, 2)}"] = pd.Series(ppms, index=distances)
 
     
-    print(df)
+    print(df.head())
+
+    print(df.columns)
+    
+
     return df
 
 
