@@ -4,7 +4,7 @@ focal_length_max: 162.5e-3 # in meters
 focal_length_binsize: 20.0e-3 # in meters
 # focal_length_binsize: 10.0e-3
 distance_start: 1 # in meters
-distance_end: 10 # in meters
+distance_end: 500 # in meters
 distance_binsize: 0.1 # in meters
 pixel_size: 2.9e-6 # in meters
 resolution: [1920,1080]

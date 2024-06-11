@@ -35,13 +35,13 @@ def generate_data(focal_length_min, focal_length_max, focal_length_binsize, star
         ppms_rounded = []
         valid_distances = []
         for distance in distances:
-            ppm = camera.get_pixels_for_meter_at_z(z=distance)
-            print(ppm)
-            if ppm > 0.5:
-                nearest_pixel = np.ceil(ppm)
+            ppm_at_z = camera.get_pixels_for_meter_at_z(z=distance)
+            print(f"pixels for 1m at {round(distance, 2)}m at f={focal_length*1000}mm:{ppm_at_z}")
+            if ppm_at_z > 0.5:
+                nearest_pixel = np.ceil(ppm_at_z)
                 length_rounded = camera.get_meters_for_pixel_at_z(z=distance, pixels=nearest_pixel)
                 lengths_rounded.append(length_rounded)
-                ppms.append(ppm)
+                ppms.append(ppm_at_z)
                 ppms_rounded.append(nearest_pixel)
                 valid_distances.append(distance)
 
