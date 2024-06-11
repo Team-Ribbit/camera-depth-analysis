@@ -68,8 +68,8 @@ def generate_data(focal_length_min, focal_length_max, focal_length_binsize, star
         print(df["Rounded Lengths (m)"])
 
     print(df.head())
-    sns.relplot(
-        data=df, kind="scatter",
+    ax = sns.scatterplot(
+        data=df,
         x="z(m)", y="Rounded Lengths (m)", hue="f", palette="Set1"
     )
 
