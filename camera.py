@@ -1,22 +1,24 @@
 import numpy as np
 
+
 class CameraModel():
-    def __init__(self, f):
+    def __init__(self, f, pixel_size, x_resolution, y_resolution):
         self.f = f
-        self._DATUM = 1 # 1m
+        self._DATUM = 1  # 1m
+        self.pixel_size = pixel_size  # how long each pixel is in meters
+        self.ppm = 1 / pixel_size
 
-
-    def get_ppm(self, z):
+    def get_pixels_for_meter_at_z(self, z):
         """
         calculate how man pixels would 1 meter be given z distance
         :param z:
         :return:
         """
         if z < self._minimum_distance_to_meter():
-            pixels =  np.NaN
+            pixels = np.NaN
         else:
-            pixels = self.f * (self._DATUM / z)
-        
+            pixels = self.f * (self._DATUM / z) * self.ppm
+
         return pixels
 
     def _minimum_distance_to_meter(self):
@@ -27,7 +29,6 @@ class CameraModel():
         pass
 
         return 0
-    
 
 
 """
@@ -46,11 +47,3 @@ Each different instances of the line would be different focal lengths
 3 different plots
 
 """
-
-
-
-
-
-
-
-
