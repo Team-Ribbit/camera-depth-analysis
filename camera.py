@@ -21,6 +21,17 @@ class CameraModel():
 
         return pixels
 
+    def get_meters_for_pixel_at_z(self, z, pixels):
+        """
+        inverse function
+        :param z:
+        :return:
+        """
+
+        meters = (z * pixels) / (self.f * self.ppm)
+
+        return meters
+
     def _minimum_distance_to_meter(self):
         """
         Calculate the minimum distance to see 1 meter based on the current field of view

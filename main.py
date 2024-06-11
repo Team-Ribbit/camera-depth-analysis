@@ -39,7 +39,7 @@ def generate_data(focal_length_min, focal_length_max, focal_length_binsize, star
             print(ppm)
             if ppm > 0.5:
                 nearest_pixel = np.ceil(ppm)
-                length_rounded = nearest_pixel / ppm
+                length_rounded = camera.get_meters_for_pixel_at_z(z=distance, pixels=nearest_pixel)
                 lengths_rounded.append(length_rounded)
                 ppms.append(ppm)
                 ppms_rounded.append(nearest_pixel)
